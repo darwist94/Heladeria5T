@@ -61,7 +61,7 @@
               <Component id="Lpregunta2" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="txtRespuesta2" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="butRecuperacion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="butSalir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -77,9 +77,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRespuesta1">
@@ -92,15 +89,17 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRespuesta2">
     </Component>
     <Component class="org.edisoncor.gui.button.ButtonAction" name="butRecuperacion">
       <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder/>
+          </Border>
+        </Property>
         <Property name="text" type="java.lang.String" value="Recuperar usuario"/>
       </Properties>
       <Events>

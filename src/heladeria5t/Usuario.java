@@ -19,8 +19,8 @@ import javax.swing.JOptionPane;
 
 public class Usuario extends javax.swing.JFrame {
 
-    int i=0;
-    private String cap="";
+    int i=0,d;
+    private String p,cap="";
     CargarDatos cd=new CargarDatos();
     
     private ImageIcon imageicon;
@@ -58,7 +58,10 @@ public class Usuario extends javax.swing.JFrame {
         Statement st = cn.createStatement();
         ResultSet rs= st.executeQuery(sSQL);
         while(rs.next()){
+            p=rs.getString("niv_usu");
             cap=rs.getString("usuario");
+            d=Integer.parseInt(p);
+            cd.setTipoU(d);
         }
         if(cap!=""){
             cd.setUsuario(cap);

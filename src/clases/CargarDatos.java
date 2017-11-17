@@ -4,7 +4,7 @@ package clases;
 
 public class CargarDatos {
   private static String us;
-  private static int x,y;
+  private static int x,y,l;
   public CargarDatos() {
         us = "";
         x=0;
@@ -36,6 +36,12 @@ public class CargarDatos {
        y=j;
    }
    
+   public static int getTipoU(){
+   return l;
+   }
    
+   public static void setTipoU(int p){
+    l=p;
+   }
    
 }

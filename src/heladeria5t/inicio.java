@@ -30,15 +30,30 @@ public class inicio extends javax.swing.JFrame {
     }
     
     public void verificarUsuario(){
-         
-        if((CargarDatos.getUsuario()).equals("administrador")){
-             
-        }else{
-          
+        switch (CargarDatos.getTipoU()) {
+            case 1: {
+            break;
+            }
+            case 2: {
             ItemEliminarUser.setVisible(false);
             ItemAñadirUser.setVisible(false);
+            regprodMenu.setVisible(false);
+            break;
+            }
+            case 3: {
+            ItemEliminarUser.setVisible(false);
+            ItemAñadirUser.setVisible(false);
+            regprodMenu.setVisible(false);
+            modificar.setVisible(false);
+            jMenuItem9.setVisible(false);
+            jButton1.setEnabled(false);
+            break;
+            }
+            
         }
+       
     }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,19 +69,18 @@ public class inicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        regprodMenu = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         CerrarSesion = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         MenuAjustes = new javax.swing.JMenu();
         ItemAñadirUser = new javax.swing.JMenuItem();
         ItemEliminarUser = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        modificar = new javax.swing.JMenuItem();
+        cmbpass = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -134,9 +148,9 @@ public class inicio extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem10.setText("Registrar Producto");
-        jMenu1.add(jMenuItem10);
+        regprodMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        regprodMenu.setText("Registrar Producto");
+        jMenu1.add(regprodMenu);
 
         jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem11.setText("Registrar Cliente");
@@ -168,9 +182,6 @@ public class inicio extends javax.swing.JFrame {
         jMenuItem5.setText("Productos Registrados");
         jMenu4.add(jMenuItem5);
 
-        jMenuItem6.setText("Bitacora del Sistema");
-        jMenu4.add(jMenuItem6);
-
         jMenuItem7.setText("Ventas Realizadas");
         jMenu4.add(jMenuItem7);
 
@@ -179,6 +190,11 @@ public class inicio extends javax.swing.JFrame {
         MenuAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ajustesIcon.png"))); // NOI18N
         MenuAjustes.setText("Ajustes");
         MenuAjustes.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        MenuAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuAjustesActionPerformed(evt);
+            }
+        });
 
         ItemAñadirUser.setText("Añadir Usuario");
         ItemAñadirUser.addActionListener(new java.awt.event.ActionListener() {
@@ -189,18 +205,28 @@ public class inicio extends javax.swing.JFrame {
         MenuAjustes.add(ItemAñadirUser);
 
         ItemEliminarUser.setText("Eliminar Usuario");
-        MenuAjustes.add(ItemEliminarUser);
-
-        jMenuItem3.setText("Cambiar Nombre Usuario");
-        MenuAjustes.add(jMenuItem3);
-
-        jMenuItem2.setText("Cambiar Contraseña");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        ItemEliminarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                ItemEliminarUserActionPerformed(evt);
             }
         });
-        MenuAjustes.add(jMenuItem2);
+        MenuAjustes.add(ItemEliminarUser);
+
+        modificar.setText("Modificar Usuario");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+        MenuAjustes.add(modificar);
+
+        cmbpass.setText("Cambiar Contraseña");
+        cmbpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbpassActionPerformed(evt);
+            }
+        });
+        MenuAjustes.add(cmbpass);
 
         jMenuBar1.add(MenuAjustes);
 
@@ -236,12 +262,16 @@ public class inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ItemAñadirUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemAñadirUserActionPerformed
-        // TODO add your handling code here:
+        RegistrarUsuario Rus= new RegistrarUsuario();
+        Rus.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_ItemAñadirUserActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void cmbpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbpassActionPerformed
+       new modificarcontraseña().setVisible(true);
+            this.dispose(); // TODO add your handling code here:
+    }//GEN-LAST:event_cmbpassActionPerformed
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         // TODO add your handling code here:
@@ -254,6 +284,21 @@ public class inicio extends javax.swing.JFrame {
         new Usuario().setVisible(true);
             this.dispose();
     }//GEN-LAST:event_CerrarSesionActionPerformed
+
+    private void MenuAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAjustesActionPerformed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_MenuAjustesActionPerformed
+
+    private void ItemEliminarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEliminarUserActionPerformed
+        EliminarUsuario eu = new EliminarUsuario();
+        eu.setVisible(true);
+         this.dispose();       // TODO add your handling code here:
+    }//GEN-LAST:event_ItemEliminarUserActionPerformed
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+        new modificiarusuario().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,6 +340,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem ItemAñadirUser;
     private javax.swing.JMenuItem ItemEliminarUser;
     private javax.swing.JMenu MenuAjustes;
+    private javax.swing.JMenuItem cmbpass;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -303,15 +349,13 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem modificar;
+    private javax.swing.JMenuItem regprodMenu;
     // End of variables declaration//GEN-END:variables
 }
